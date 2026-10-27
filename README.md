@@ -1,4 +1,4 @@
-# PARASYTE - SITL Codebase (Reviewer Replication Package)
+# PARASYTE - SITL Codebase 
 
 Simulation testbed and cognitive architecture for an 8-legged Theo Jansen linkage walker.
 
