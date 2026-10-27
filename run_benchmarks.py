@@ -91,6 +91,8 @@ def build_scenario_3_deadend() -> Tuple[ArenaWorld, str]:
 
 def execute_scenario(scenario_id: int, brain: ParasyteBrain, steps: int = 800) -> Dict:
     """Executes an isolated physical scenario with full instrumentation."""
+    torch.manual_seed(42)
+    np.random.seed(42)
     if scenario_id == 1:
         arena, name = build_scenario_1_gateway()
     elif scenario_id == 2:
@@ -365,7 +367,7 @@ if __name__ == "__main__":
         res = execute_scenario(sc_id, brain, steps=step_budget)
         all_results.append(res)
 
-        workspace_fig = os.path.join(os.path.dirname(__file__), "results", f"scenario_{sc_id}_path.png")
+        workspace_fig = os.path.join(os.path.dirname(__file__), "results", f"scenario_{sc_id}_movement_path.png")
         plot_scenario_trajectory(res, [workspace_fig])
 
         print(f"   Done in {res['duration_s']:.2f}s | Final: X={res['final_x_mm']:.1f}mm, Y={res['final_y_mm']:.1f}mm | Heading: {res['final_yaw_deg']:.2f}°")
